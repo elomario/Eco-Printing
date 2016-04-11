@@ -6,14 +6,51 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Print</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/open_file.js"></script>	
         <script src="js/push.js"></script>
     </head>
     <body>
-        <div>TODO write content</div>
+		
+		<br>
+		Open File:
+		<script type="text/javascript">
+		
+		function Upload()
+		{			
+			var ref = new Firebase("https://popping-fire-7207.firebaseio.com/");
+			var filesRef = ref.child("files");
+			var filename = document.getElementById("file-input").value;
+			var storepath = "http://127.0.0.1:8002/files/";
+			var newpdfsRef = pdfsRef.push();
+			newpdfsRef.set({
+					file_name: "filename",
+					number_pages: "pagenum"
+				});
+			
+		}
+		</script>
+		<form action="upload" method="post" enctype="multipart/form-data">
+		<input type="file" id="file-input" name="displayImage"/>
+		
+		<input type="submit" value="Upload"/>
+		</form>
+		<input type="Button" id="check" value="Check Attributes"/>
+		
+		<h3>Attributes of the file:</h3>
+		Name: <div class="name"></div>
+		<br>
+		Type: <div class="type"></div>
+		<br>
+		Size: <div class="size"></div>
+		<br>
+		Pages: <div class="pages"></div>
+		<br>
+
     </body>
 </html>
